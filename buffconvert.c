@@ -6,7 +6,7 @@
 /*   By: fratardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/01 17:26:07 by fratardi          #+#    #+#             */
-/*   Updated: 2019/01/01 19:08:12 by fratardi         ###   ########.fr       */
+/*   Updated: 2019/01/01 19:42:41 by fratardi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,24 +43,28 @@ unsigned short	buffconvert(char *str)
 	unsigned short	mask;
 	unsigned short 	ret;
 	size_t			pos;
+	int				b;
 	
 	pos = 0;
 	ret = 0;
 	mask = 32768;
+	b = 0;
 	if (ft_strlen(str) != 20 || !ft_checksum(str))
 		return (0);
 	while(pos < 21 && str[pos])
 	{
 		while(str[pos] && str[pos] != '\n')
 		{
-			if(str[pos] == '#')
+			if(str[pos] == '#' && (b = 1))
 				ret =ret | mask;
 			mask = mask>>1;
 			pos++;
 		}
+
+		mask = b ? mask : 32768;
 		pos++;
 	}
-	return(toplefter(ret));
+	return(ret);
 }
 
 unsigned short			*ft_arr()
@@ -128,10 +132,10 @@ char				*ft_read(char *file)
 
 int main(int ac, char **av)
 {
-	char str[21]= "....\n##..\n.##.\n....\n"; 
+	char str[21]= "##..\n##..\n....\n....\n"; 
 
-	printf("%s", ft_read(av[1]));
-//	printf("RETURN : %d\n", buffconvert(str));
+//	printf("%s", ft_read(av[1]));
+	printf("RETURN : %d\n", buffconvert(str));
 //	printf("OUTPUT : %d\n", TETRI);
 //	printf("RET2RN : %d", toplefter(buffconvert(str)));
 }
