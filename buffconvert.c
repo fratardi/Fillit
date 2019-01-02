@@ -6,20 +6,14 @@
 /*   By: fratardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/01 17:26:07 by fratardi          #+#    #+#             */
-/*   Updated: 2019/01/02 16:45:24 by fratardi         ###   ########.fr       */
+/*   Updated: 2019/01/02 18:28:41 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include "fillit.h"
 #include <stdio.h>
-#include "./libft/libft.h"
-# define BUFF_SIZE 20
-#include <stdlib.h>
-#include <fcntl.h>
-#include <sys/types.h>
-#include <unistd.h>
 
-int			ft_checksum(char *str)
+int			ft_checksum(const char *str)
 {
 	int sum;
 	int total;
@@ -33,7 +27,7 @@ int			ft_checksum(char *str)
 	return (total == sum);
 }
 
-unsigned short	buffconvert(char *str)
+unsigned short	buffconvert(const char *str)
 {
 	unsigned short	mask;
 	unsigned short 	ret;
@@ -102,60 +96,50 @@ unsigned short		toplefter(unsigned short value)
 
 	arr = ft_arr();
 	while(value != 0 && !ft_eq(arr, value))
-		value = value << 1 ;	
+		value = value << 1 ;
+	free(arr);
 	return(value);
 }
 
-int					ft_read(const int fd, char **str)
+void	ft_freetetri(t_tetris **head)
 {
-	int		fd;
-	int		ret;
-	char	*buf;
-	char	ch;
-
-	buf = (char*)malloc(sizeof(char) * 20);
-	ret = read(fd, buf, BUFF_SIZE);
-	buf[ret] = '\0';
-	if (ret < BUFF_SIZE || ft_strlen(buf) != 20 || !ft_checksum(buf))
-		return (-1);
-	if ((ret = read(fd, &ch, 1)) && ch != '\n')
-		return (-1);
-	*str = buf;
-	if (ret == 0)
-		return (0);
-	return (1);
+	if (!head || !*head)
+		return ;
+	ft_freetetri(&((*head)->next));
+	free(*head);
+	*head = 0;
 }
 
-int	ft_puterror()
+int		ft_puterror(int ac, t_tetris **head, int i)
 {
-	ft_putstr("error");
+	if (ac != 2)
+	{
+		ft_putendl("usage: fillit input_file");
+		return (0);
+	}
+	if (head && *head)
+		ft_freetetri(head);
+	if (!i)
+		ft_putstr("error");
 	return (0);
 }
 
 int main(int ac, char **av)
 {
-	s_tetri *link;
+	t_tetris *link;
 	int	fd;
-	char *tetri;
-	int ret;
 	char str[21]= "....\n....\n..#.\n.###\n";
 
-
+	if (ac != 2)
+		return (ft_puterror(ac, 0, 0));
 	if(0 > (fd = open(av[1], O_RDONLY)))
-	{
-		return (ft_puterror());
-	}
-	while ((ret = ft_read(fd, &tetri)) == 1)
-	{
-		if (!buffconvert(tetri))
-			return (ft_puterror());
-						
-	}
-	if (ret == -1)
-		return (ft_puterror());	
-		
+		return (ft_puterror(ac, 0, 0));
+	if (!(ft_read_file(fd, &link)))
+		return (ft_puterror(ac, &link, 0));
+	ft_tetrisdisp(link);
 		//	printf("%s", ft_read(fd));
-	printf("RETURN : %d\n", buffconvert(str));
+//	printf("RETURN : %d\n", buffconvert(str));
 //	printf("OUTPUT : %d\n", TETRI);
-	printf("RET2RN : %d", toplefter(buffconvert(str)));
+//.	printf("RET2RN : %d", toplefter(buffconvert(str)));
+	return (ft_puterror(ac, &link, 1));
 }
