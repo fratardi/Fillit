@@ -6,11 +6,11 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 17:16:10 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/01/02 18:33:55 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/01/02 19:16:31 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "../includes/fillit.h"
 
 int			ft_read(const int fd, char **str)
 {
@@ -33,10 +33,10 @@ int			ft_read(const int fd, char **str)
 
 int			ft_read_file(const int fd, t_tetris **head)
 {
-	char		*line;
-	int			ret;
-	char		ch;
-	t_tetris	*ele;
+	char			*line;
+	int				ret;
+	char			ch;
+	t_tetris		*ele;
 	unsigned short	tetri;
 
 	ch = 'A';
