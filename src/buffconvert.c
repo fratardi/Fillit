@@ -6,7 +6,7 @@
 /*   By: fratardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/01 17:26:07 by fratardi          #+#    #+#             */
-/*   Updated: 2019/01/02 19:16:02 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/01/02 19:28:27 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,34 +22,6 @@ int					ft_checksum(const char *str)
 	while (*str)
 		total = total + (int)*(str++);
 	return (total == sum);
-}
-
-unsigned short		buffconvert(const char *str)
-{
-	unsigned short	mask;
-	unsigned short	ret;
-	size_t			pos;
-	int				b;
-
-	pos = 0;
-	ret = 0;
-	mask = 32768;
-	b = 0;
-	if (ft_strlen(str) != 20 || !ft_checksum(str))
-		return (0);
-	while (pos < 21 && str[pos])
-	{
-		while (str[pos] && str[pos] != '\n')
-		{
-			if (str[pos] == '#' && (b = 1))
-				ret = ret | mask;
-			mask = mask >> 1;
-			pos++;
-		}
-		mask = b ? mask : 32768;
-		pos++;
-	}
-	return (toplefter(ret));
 }
 
 unsigned short		*ft_arr(void)
@@ -95,4 +67,32 @@ unsigned short		toplefter(unsigned short value)
 		value = value << 1;
 	free(arr);
 	return (value);
+}
+
+unsigned short		buffconvert(const char *str)
+{
+	unsigned short		mask;
+	unsigned short		ret;
+	size_t				pos;
+	int					b;
+
+	pos = 0;
+	ret = 0;
+	mask = 32768;
+	b = 0;
+	if (ft_strlen(str) != 20 || !ft_checksum(str))
+		return (0);
+	while(pos < 21 && str[pos])
+	{
+		while (str[pos] && str[pos] != '\n')
+		{
+			if (str[pos] == '#' && (b = 1))
+				ret = ret | mask;
+			mask = mask >> 1;
+			pos++;
+		}
+		mask = b ? mask : 32768;
+		pos++;
+	}
+	return (toplefter(ret));
 }
