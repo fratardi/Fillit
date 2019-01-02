@@ -6,7 +6,7 @@
 /*   By: fratardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/01 17:26:07 by fratardi          #+#    #+#             */
-/*   Updated: 2019/01/01 19:42:41 by fratardi         ###   ########.fr       */
+/*   Updated: 2019/01/02 16:45:24 by fratardi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,6 @@
 #include <fcntl.h>
 #include <sys/types.h>
 #include <unistd.h>
-
-
-//#define TETRI (52224 && 19520 )
-
-unsigned short	toplefter(unsigned short value);
 
 int			ft_checksum(char *str)
 {
@@ -64,7 +59,7 @@ unsigned short	buffconvert(char *str)
 		mask = b ? mask : 32768;
 		pos++;
 	}
-	return(ret);
+	return (toplefter(ret));
 }
 
 unsigned short			*ft_arr()
@@ -87,7 +82,6 @@ unsigned short			*ft_arr()
 	arr[12] = 19968;
 	arr[13] = 35968;
 	arr[14] = 19520;
-
 	return (arr);
 }
 
@@ -112,30 +106,56 @@ unsigned short		toplefter(unsigned short value)
 	return(value);
 }
 
-char				*ft_read(char *file)
+int					ft_read(const int fd, char **str)
 {
 	int		fd;
 	int		ret;
 	char	*buf;
 	char	ch;
 
-	fd = open(file, O_RDONLY);
 	buf = (char*)malloc(sizeof(char) * 20);
 	ret = read(fd, buf, BUFF_SIZE);
 	buf[ret] = '\0';
 	if (ret < BUFF_SIZE || ft_strlen(buf) != 20 || !ft_checksum(buf))
-		return (0);
+		return (-1);
 	if ((ret = read(fd, &ch, 1)) && ch != '\n')
+		return (-1);
+	*str = buf;
+	if (ret == 0)
 		return (0);
-	return (buf);
+	return (1);
+}
+
+int	ft_puterror()
+{
+	ft_putstr("error");
+	return (0);
 }
 
 int main(int ac, char **av)
 {
-	char str[21]= "##..\n##..\n....\n....\n"; 
+	s_tetri *link;
+	int	fd;
+	char *tetri;
+	int ret;
+	char str[21]= "....\n....\n..#.\n.###\n";
 
-//	printf("%s", ft_read(av[1]));
+
+	if(0 > (fd = open(av[1], O_RDONLY)))
+	{
+		return (ft_puterror());
+	}
+	while ((ret = ft_read(fd, &tetri)) == 1)
+	{
+		if (!buffconvert(tetri))
+			return (ft_puterror());
+						
+	}
+	if (ret == -1)
+		return (ft_puterror());	
+		
+		//	printf("%s", ft_read(fd));
 	printf("RETURN : %d\n", buffconvert(str));
 //	printf("OUTPUT : %d\n", TETRI);
-//	printf("RET2RN : %d", toplefter(buffconvert(str)));
+	printf("RET2RN : %d", toplefter(buffconvert(str)));
 }

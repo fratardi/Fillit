@@ -31,37 +31,44 @@ ____________________|___________________|_______________________________________
 |[0][0][0][0] 0000	| [0][0][0][0] 0000 | [0][0][0][0] 0000 | [0][0][0][0]  0000 |
 |___________________|___________________|___________________|____________________|
 
+* longlonglong int
+
+int [][][][][][][][][][][][][][][][][][][][][]
+int [][][][][][][][][][][][][][][][][][][][][]
+
 iterate a << (bite drift ? to right) over each created value until it reaches 0 or one of the matching tetri value
 
 apply or of the selected value to an unsigned short pre defined to 0
 
 /* Check 
 **
-
- 		**  check if arguments are valid
-
+**  check if arguments are valid
 **
 		** Validity of the input
-			how  to check if input is valid ?
+		how  to check if input is valid ?
+		check if the file only contains {'#','.','\n','\0'}	
+		check if each rows contain only 5  or 1 char 
+		buffconvert can pass over the buffer and return a value different than 0
 **
 */
 
 /* Convert
 **
 				** how to convert the  ((4  +  1) x 5) + 1 = 26 characters into one unsigned short
+				V	done 			
 
- 
- 				** how to stock values
-
- 
- 				** how to handle every unsigned short over grids 
-**
+ d
+ 				** how to stock values ???
+						maybe use a structure containing the grid positions of the tetrimino , the shape of the tetrimino and the order of arrival 
+						into  a chained list 
+ **
 ** 
 */
 
 
 /* Organize
 **   
+ 				** how to handle every unsigned short over grids 
 **
 **
 */
@@ -82,7 +89,6 @@ apply or of the selected value to an unsigned short pre defined to 0
 **
 */
 
-
 /* return
 ** 
 **
@@ -90,7 +96,6 @@ apply or of the selected value to an unsigned short pre defined to 0
 **
 **
 */
-
 
 /*
 **	Display  
