@@ -72,11 +72,13 @@ apply or of the selected value to an unsigned short pre defined to 0
 
 how to apply masks over tetriminoes to only keep one line of it inside an onther value
 
-for example i want to display only the first line oof the tetriminos 1000 1110 0000 0000 = =
-
-
-
-
+for example i want to display only the first line oof the tetriminos 1000 1110 0000 0000 = 0x8E00 = 36352
+	i use a & mask of the selected mask to keep the value            1111 0000 0000 0000 = 0xF000 = 61440
+													that gives us 	 1000 0000 0000 0000 = 0x8000 = 32768
+so we could either set the top 0xF000 = 61440 = 1111 0000 0000 0000
+and use 					   0xF00  =	3840  = 0000 1111 0000 0000
+												0000 0000 1111 0000
+												0000 0000 0000 1111
 
 positionate the tetri according to its position on the grid before applying checks 
 
