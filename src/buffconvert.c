@@ -6,7 +6,7 @@
 /*   By: fratardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/01 17:26:07 by fratardi          #+#    #+#             */
-/*   Updated: 2019/01/02 19:28:27 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/01/02 20:41:35 by fratardi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ unsigned short		buffconvert(const char *str)
 	b = 0;
 	if (ft_strlen(str) != 20 || !ft_checksum(str))
 		return (0);
-	while(pos < 21 && str[pos])
+	while (pos < 21 && str[pos])
 	{
 		while (str[pos] && str[pos] != '\n')
 		{
