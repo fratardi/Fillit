@@ -6,7 +6,7 @@
 /*   By: fratardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/29 12:01:39 by fratardi          #+#    #+#             */
-/*   Updated: 2019/01/03 15:43:00 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/01/03 15:58:11 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include "../libft/libft.h"
 # define BUFF_SIZE 20
+# define NO_OF_TETRIMINOS 17
 
 typedef struct			s_tetris
 {

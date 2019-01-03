@@ -6,7 +6,7 @@
 /*   By: fratardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/01 17:26:07 by fratardi          #+#    #+#             */
-/*   Updated: 2019/01/03 15:46:30 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/01/03 15:57:45 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static unsigned short		*ft_arr(void)
 {
 	unsigned short	*arr;
 
-	arr = (unsigned short*)malloc(sizeof(unsigned short) * 15);
+	arr = (unsigned short*)malloc(sizeof(unsigned short) * NO_OF_TETRIMINOS);
 	arr[0] = 19584;
 	arr[1] = 50688;
 	arr[2] = 27648;
@@ -28,10 +28,12 @@ static unsigned short		*ft_arr(void)
 	arr[8] = 50240;
 	arr[9] = 51328;
 	arr[10] = 57856;
-	arr[11] = 58368;
-	arr[12] = 19968;
-	arr[13] = 35968;
-	arr[14] = 19520;
+	arr[11] = 36352;
+	arr[12] = 11776;
+	arr[13] = 58368;
+	arr[14] = 19968;
+	arr[15] = 35968;
+	arr[16] = 19520;
 	return (arr);
 }
 
@@ -40,7 +42,7 @@ static int					ft_eq(unsigned short *arr, unsigned short value)
 	int		i;
 
 	i = 0;
-	while (i < 15)
+	while (i < NO_OF_TETRIMINOS)
 		if (arr[i++] == value)
 			return (1);
 	return (0);
