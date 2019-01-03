@@ -6,7 +6,7 @@
 /*   By: fratardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/29 12:01:39 by fratardi          #+#    #+#             */
-/*   Updated: 2019/01/02 19:32:06 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/01/03 15:43:00 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,4 @@ int						ft_tetriconvert(t_tetris **alst, int letter, char *str);
 int						ft_read_file(const int fd, t_tetris **head);
 unsigned short			buffconvert(const char *tab);
 
-int						ft_checksum(const char *str);
 #endif

@@ -6,13 +6,53 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 17:16:10 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/01/02 19:16:31 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/01/03 15:46:47 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
 
-int			ft_read(const int fd, char **str)
+static int			ft_checkadj(const char *str, const int i)
+{
+	int		count;
+
+	count = 0;
+	if (i % 5 != 0)
+		count = str[i - 1] == '#' ? count + 1 : count;
+	if ((i + 2) % 5 != 0)
+		count = str[i + 1] == '#' ? count + 1 : count;
+	if (i < 15)
+		count = str[i + 5] == '#' ? count + 1 : count;
+	if (i > 4)
+		count = str[i - 5] == '#' ? count + 1 : count;
+	return (count);
+}
+
+static int			ft_checksum(const char *str)
+{
+	int			cnt_dot;
+	int			cnt_hash;
+	int			cnt;
+	int			i;
+
+	i = 0;
+	cnt_dot = 0;
+	cnt_hash = 0;
+	cnt = 0;
+	while (str[i])
+	{
+		if (str[i] == '#' && (cnt_hash = cnt_hash + 1))
+			cnt += ft_checkadj(str, i);
+		if (str[i] == '.')
+			cnt_dot++;
+		if (str[i] == '\n' && (i + 1) % 5 != 0)
+			return (0);
+		i++;
+	}
+	return (cnt_dot + cnt_hash == 16 && (cnt == 6 || cnt == 8));
+}
+
+static int			ft_read(const int fd, char **str)
 {
 	int		ret;
 	char	*buf;
@@ -31,7 +71,7 @@ int			ft_read(const int fd, char **str)
 	return (1);
 }
 
-int			ft_read_file(const int fd, t_tetris **head)
+int					ft_read_file(const int fd, t_tetris **head)
 {
 	char			*line;
 	int				ret;

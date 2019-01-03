@@ -6,25 +6,13 @@
 /*   By: fratardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/01 17:26:07 by fratardi          #+#    #+#             */
-/*   Updated: 2019/01/02 20:41:35 by fratardi         ###   ########.fr       */
+/*   Updated: 2019/01/03 15:46:30 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
 
-int					ft_checksum(const char *str)
-{
-	int sum;
-	int total;
-
-	total = 0;
-	sum = 4 * (int)('#') + 12 * (int)('.') + 4 * (int)('\n');
-	while (*str)
-		total = total + (int)*(str++);
-	return (total == sum);
-}
-
-unsigned short		*ft_arr(void)
+static unsigned short		*ft_arr(void)
 {
 	unsigned short	*arr;
 
@@ -47,7 +35,7 @@ unsigned short		*ft_arr(void)
 	return (arr);
 }
 
-int					ft_eq(unsigned short *arr, unsigned short value)
+static int					ft_eq(unsigned short *arr, unsigned short value)
 {
 	int		i;
 
@@ -58,7 +46,7 @@ int					ft_eq(unsigned short *arr, unsigned short value)
 	return (0);
 }
 
-unsigned short		toplefter(unsigned short value)
+static unsigned short		toplefter(unsigned short value)
 {
 	unsigned short		*arr;
 
@@ -69,7 +57,7 @@ unsigned short		toplefter(unsigned short value)
 	return (value);
 }
 
-unsigned short		buffconvert(const char *str)
+unsigned short				buffconvert(const char *str)
 {
 	unsigned short		mask;
 	unsigned short		ret;
@@ -80,8 +68,6 @@ unsigned short		buffconvert(const char *str)
 	ret = 0;
 	mask = 32768;
 	b = 0;
-	if (ft_strlen(str) != 20 || !ft_checksum(str))
-		return (0);
 	while (pos < 21 && str[pos])
 	{
 		while (str[pos] && str[pos] != '\n')
