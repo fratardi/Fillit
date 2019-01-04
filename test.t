@@ -77,15 +77,26 @@ for example i want to display only the first line oof the tetriminos 1000 1110 0
 													that gives us 	 1000 0000 0000 0000 = 0x8000 = 32768
 so we could either set the top 0xF000 = 61440 = 1111 0000 0000 0000
 and use 					   0xF00  =	3840  = 0000 1111 0000 0000
-												0000 0000 1111 0000
-												0000 0000 0000 1111
+							   0xF0	  = 240	  =	0000 0000 1111 0000
+							   0xF	  = 15	  =	0000 0000 0000 1111
 
 positionate the tetri according to its position on the grid before applying checks 
+instead of making a grid for check 
+check if every line of each tetriminos can fit over each line preseted at 0 every time 
+add each tetri line as layer and check if tetriminos don't overlap each other ...
 
+
+Eventually we could : check if can 
+
+So how to check if every line of the tetrimino 
+----  
+****
+----
+/* ???????????????????????????????????????
 check if i can put the tetri on the grid
-
-check it the grid stil valid after i place the tetrimino
-
+??????????????????????????????????????????
+check it the line stil valid after i place the tetrimino on the line ;
+*/
 
 /* Organize
 **   
