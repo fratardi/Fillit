@@ -6,11 +6,9 @@
 /*   By: fratardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 17:32:13 by fratardi          #+#    #+#             */
-/*   Updated: 2019/01/06 18:13:19 by fratardi         ###   ########.fr       */
+/*   Updated: 2019/01/06 20:51:02 by fratardi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 //function that gets the content of a tetrimino line and moves the x position to get it right
 unsigned short 	tetrilinejuster(unsigned short tetris, int  linetoget, int position)
@@ -25,12 +23,12 @@ unsigned short 	tetrilinejuster(unsigned short tetris, int  linetoget, int posit
 		return (((tetris & 15)<<12)>>position);
 	return(0);
 }
-
+// check if the line applied does not goes out of the line border  
 int		within_line_border(unsigned short linetocheck, int	gridsize)
 {
 	return (((((linetocheck & 65535) << gridsize) > 0 ) ? 0 : 1);
 }
-
+//	check if grid is valid line by line
 int		isgridvalid(t_tetris *tetris,int gridsize)
 {
 	unsigned short	line;
