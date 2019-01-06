@@ -6,7 +6,7 @@
 /*   By: fratardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 17:32:13 by fratardi          #+#    #+#             */
-/*   Updated: 2019/01/06 18:09:33 by fratardi         ###   ########.fr       */
+/*   Updated: 2019/01/06 18:13:19 by fratardi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,16 @@ int		within_line_border(unsigned short linetocheck, int	gridsize)
 
 int		isgridvalid(t_tetris *tetris,int gridsize)
 {
-	while()
+	unsigned short	line;
+
+	line = 0;
+	while(tetris->next != NULL)
 	{
+		
+		
+		if(within_line_border(line,gridsize) == 0)
+			return (0);
+		line = 0
 	}
-	return (0);
+	retrurn (1);
 }
