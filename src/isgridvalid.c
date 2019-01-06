@@ -6,7 +6,7 @@
 /*   By: fratardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 17:32:13 by fratardi          #+#    #+#             */
-/*   Updated: 2019/01/06 17:59:05 by fratardi         ###   ########.fr       */
+/*   Updated: 2019/01/06 18:04:37 by fratardi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ unsigned short 	tetrilinejuster(unsigned short tetris, int  linetoget, int posit
 		return (((tetris & 240)<<8)>>position);
 	if(linetoget == 4)
 		return (((tetris & 15)<<12)>>position);
+	return(0);
 }
 
 unsigned short  filllinex(s_struct *tetri,int linetocheck)
@@ -39,10 +40,7 @@ unsigned short  filllinex(s_struct *tetri,int linetocheck)
 
 int		within_line_border(unsigned short linetocheck, int	gridsize)
 {
-	unsigned short		mask;
-
-	mask = 65535;
-	return (((mask = mask>>gridsize) > 0 ) ? 0 : 1);
+	return (((65535>>gridsize) > 0 ) ? 0 : 1);
 }
 
 int		isgridvalid(t_tetris *tetris,int gridsize)
