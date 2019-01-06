@@ -1,0 +1,182 @@
+All figures on the top left total 4 + 1 + 2 + 6 + 4 = 17
+____________________________________________________________________________________
+|	0x4C80 = 19584	|	0cC600 = 50688 	|	0c6C00 = 27648	|	0x8C40 = 35904	| z |
+|___________________|___________________|___________________|___________________|___|
+| [.][#][.][.] 0100 | [#][#][.][.] 1100 | [.][#][#][.] 0110 | [#][.][.][.] 1000 |
+| [#][#][.][.] 1100 | [.][#][#][.] 0110 | [#][#][.][.] 1100 | [#][#][.][.] 1100 |
+| [#][.][.][.] 1000 | [.][.][.][.] 0000 | [.][.][.][.] 0000 | [.][#][.][.] 0100 |
+| [.][.][.][.] 0010 | [.][.][.][.] 0000 | [.][.][.][.] 0000 | [.][.][.][.] 0000 |
+|___________________|___________________|___________________|___________________|
+| 0xCC00 = 52224	|	Square	|
+|___________________|___________|
+| [#][#][.][.] 1100 |
+| [#][#][.][.] 1100 |
+| [.][.][.][.] 0000 |
+| [.][.][.][.] 0000 |
+|___________________|_________________________
+| 0x8888 = 34952 	| 0xF000 = 61440	| Bar |
+|___________________|___________________|_____|
+| [#][.][.][.] 1000 | [#][#][#][#] 1111 |
+| [#][.][.][.] 1000 | [.][.][.][.] 0000 |
+| [#][.][.][.] 1000 | [.][.][.][.] 0000 |
+| [#][.][.][.] 1000 | [.][.][.][.] 0000 |
+____________________|___________________|__________________________________________________________________________________
+| OxE800 = 59392 	| 0xC440 = 50240 	|	0xC880 = 51328	| 0xE200 = 57856 	| 0x8E00 = 36352	| 0x2E00 = 11776	|L|
+|___________________|___________________|___________________|___________________|___________________|___________________|_|
+| [#][#][#][.] 1110	| [#][#][.][.] 1100 | [#][#][.][.] 1100 | [#][#][#][.] 1110 | [#][.][.][.] 1000 | [.][.][#][.] 0010 |
+| [#][.][.][.] 1000 | [.][#][.][.] 0100 | [#][.][.][.] 1000 | [.][.][#][.] 0010 | [#][#][#][.] 1110 | [#][#][#][.] 1110 |
+| [.][.][.][.] 0000	| [.][#][.][.] 0100 | [#][.][.][.] 1000 | [.][.][.][.] 0000 | [.][.][.][.] 0000 | [.][.][.][.] 0000 |
+| [.][.][.][.] 0000	| [.][.][.][.] 0000 | [.][.][.][.] 0000 | [.][.][.][.] 0000 | [.][.][.][.] 0000 | [.][.][.][.] 0000 |
+|___________________|___________________|___________________|___________________|___________________|___________________|
+|	0xE400 = 58368	| 0x4E00 = 19968 	| 0x8C80 = 35968	| 0x4C40 = 19520	|T |
+|___________________|___________________|___________________|___________________|__|
+|[#][#][#][.] 1110	| [.][#][.][.] 0100 | [#][.][.][.] 1000 | [.][#][.][.] 0100 |
+|[.][#][.][.] 0100	| [#][#][#][.] 1110 | [#][#][.][.] 1100 | [#][#][.][.] 1100 |
+|[.][.][.][.] 0000	| [.][.][.][.] 0000 | [#][.][.][.] 1000 | [.][#][.][.] 0100 |
+|[.][.][.][.] 0000	| [.][.][.][.] 0000 | [.][.][.][.] 0000 | [.][.][.][.] 0000 |
+|___________________|___________________|___________________|___________________|
+
+* longlonglong int
+
+to convert the buff to the unsigned short
+
+iterate a << (bite drift ? to right) over each created value until it reaches 0 or one of the matching tetri value
+
+apply or of the selected value to an unsigned short pre defined to 0
+
+/* Check
+**
+** check if arguments are valid
+**
+		** Validity of the input
+		how to check if input is valid ?
+		check if the file only contains {'#','.','\n','\0'}
+		check if each rows contain only 5 or 1 char
+		buffconvert can pass over the buffer and return a value different than 0
+**
+*/
+
+/* Convert
+**
+				** how to convert the ((4 + 1) x 5) + 1 = 26 characters into one unsigned short
+				V	done
+
+ d
+ 				** how to stock values ???
+						maybe use a structure containing the grid positions of the tetrimino , the shape of the tetrimino and the order of arrival
+						into a chained list
+				V done
+ **
+**
+*/
+
+how to apply masks over tetriminoes to only keep one line of it inside an onther value
+
+for example i want to display only the first line oof the tetriminos 1000 1110 0000 0000 = 0x8E00 = 36352
+	i use a & mask of the selected mask to keep the value			 1111 0000 0000 0000 = 0xF000 = 61440
+													that gives us 	 1000 0000 0000 0000 = 0x8000 = 32768
+so we could either set the top 	0xF000 	= 61440 = 1111 0000 0000 0000 = MASK 1
+and use 					 	0xF00 	= 3840	= 0000 1111 0000 0000 = MASK 2
+							 	0xF0	= 240	= 0000 0000 1111 0000 = MASK 3
+							 	0xF		= 15 	= 0000 0000 0000 1111 = MASK 4
+
+positionate the tetri according to its position on the grid before applying checks
+instead of making a grid for check
+check if every line of each tetriminos can fit over each line preseted at 0 every time
+add each tetri line as layer and check if tetriminos don't overlap each other ...
+
+Eventually we could : check if can
+So how to check if every line of the tetrimino are valid within the supposed grid , let's try with the example
+
+---------------------------------------------------------------------------------------------------------------
+check if it fits within the boundaries
+EXAMPLE
+Tn = {unsigned short tetris ,int[3] oxy, 					 ,t_tetris *next }
+								 		[Origin][row][column]
+T1{1100 1100 0000 0000, [A][0][0], *T2}
+T2{1000 1000 1000 1000, [B][3][0], NULL}
+----------------------------------------------------------------------------------------------------------------
+int		f_check(t_tetris *t, int gridsize)
+
+Check the first line
+how to ?, we parse the list and see if the y of every element matches with the line
+, in our example we got two of them with a y == 0
+so we apply a 1111 0000 0000 0000 & mask over each element matching the y == 0
+giving us
+
+T1 1100 0000 0000 0000
+T2 1000 0000 0000 0000
+
+Now we operate a byte drift according to their row
+
+formula 	tn >> (((x - 1) >= 0) ? (x - 1) : 0)
+example over t1 && t2
+
+t1 >>0
+t1 = 1100 0000 0000 0000
+
+t2 >>(2 == (3 - 1))
+t2 = 0010 0000 0000 0000
+
+we apply the two lines together
+with a OR mask
+
+ 1100 0000 0000 0000
+|0010 0000 0000 0000
+ 1110 0000 0000 0000 = 0xE000 = 57344
+------------------------------------------------------------------------------
+how to check if tetris overlap themselves
+?????????????????????????????????????????
+
+
+
+------------------------------------------------------------------------------
+see if it matches within the limits of the grid
+if gridlen = 3
+make a 0xFFFF mask and drift it by length of grid
+
+so 0xFFF >> gridlen == mask for line
+0001 1111 1111 1111 = 0x1FFF = 8191
+and apply a and mask over it ?
+ 1110 0000 0000 0000
+&0001 1111 1111 1111
+=0000 0000 0000 0000
+0 says that we don't get out of the border
+if result is different than zero that would mean that we go out of the border
+------------------------------------------------------------------------------
+check first line ok so now how to check the n th line
+?????????????????????????????????????????????????????
+
+------------------------------------------------------------------------------
+/* Organize
+**
+**
+**
+**
+*/
+------------------------------------------------------------------------------
+/* Solve
+**	How to make a map able to handle the result
+**
+**
+**
+**
+**
+**
+**
+**
+*/
+-----------------------------------------------------------------------------
+/* return
+**
+**
+**
+**
+**
+*/
+-----------------------------------------------------------------------------
+/*
+**	Display
+**
+**
+*/
