@@ -127,9 +127,6 @@ with a OR mask
 ------------------------------------------------------------------------------
 how to check if tetris overlap themselves
 ?????????????????????????????????????????
-
-
-
 ------------------------------------------------------------------------------
 see if it matches within the limits of the grid
 if gridlen = 3
@@ -159,6 +156,19 @@ check first line ok so now how to check the n th line
 **	How to make a map able to handle the result
 **
 **
+		while()
+		{
+			while()
+			{
+				while()
+				{
+					;
+				}
+				swap tetris
+				set position to 0;
+			}
+			increase gridsize
+		}
 **
 **
 **
