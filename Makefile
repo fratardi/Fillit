@@ -6,7 +6,7 @@
 #    By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/02 19:01:54 by dkhatri           #+#    #+#              #
-#    Updated: 2019/01/02 19:07:54 by dkhatri          ###   ########.fr        #
+#    Updated: 2019/01/07 17:15:12 by dkhatri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ FLAGS =
 
 SRCDIR = ./src/
 
-FUNCTIONS = addtochain.c buffconvert.c parse_file.c
+FUNCTIONS = addtochain.c buffconvert.c parse_file.c isgridvalid.c ft_display.c
 
 SRCO = $(addprefix $(SRCDIR), $(FUNCTIONS:.c=.o)) \
 		$(MAIN:.c=.o)

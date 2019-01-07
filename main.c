@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 18:54:54 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/01/02 19:09:07 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/01/07 17:48:14 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		ft_puterror(int ac, t_tetris **head, int i)
 	return (0);
 }
 
-int		main(int ac, char **av)
+/*int		main(int ac, char **av)
 {
 	t_tetris	*link;
 	int			fd;
@@ -48,4 +48,30 @@ int		main(int ac, char **av)
 		return (ft_puterror(ac, &link, 0));
 	ft_tetrisdisp(link);
 	return (ft_puterror(ac, &link, 1));
+}*/
+
+int			main(int ac, char **av)
+{
+	int			fd;
+	char		buf[13];
+	char		**str;
+	int			ret;
+	int			size;
+	t_tetris	*head;
+	t_tetris	*ele;
+
+	fd = open(av[1], O_RDONLY);
+	size = 4;
+	head = 0;
+	while ((ret = read(fd, buf, 12)) == 12)
+	{
+		buf[ret] = 0;
+		str = ft_strsplit(buf, ' ');
+		ele = ft_tetrisnew(str[0][0], (unsigned short)ft_atoi(str[1]));
+		ele->oxy[0] = ft_atoi(str[2]);
+		ele->oxy[1] = ft_atoi(str[3]);
+		ft_tetrisaddlast(&head, ele);
+	}
+	ft_display(head, size);
+	return (0);
 }
