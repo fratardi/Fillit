@@ -6,7 +6,7 @@
 /*   By: fratardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 17:32:13 by fratardi          #+#    #+#             */
-/*   Updated: 2019/01/07 21:24:16 by fratardi         ###   ########.fr       */
+/*   Updated: 2019/01/07 21:45:34 by fratardi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,5 @@ int				isgridvalid(t_tetris *tetris,int gridsize)
 //	check if line of tetri  overlap the previously written  line to check
 int				is_overlap(unsigned short lineof_t, unsigned short return of linejuster(tetris))
 {
-	return ((((lineof_t | tetris ) ^= tetris)) ? 1 : 0 );
+	return (((((lineof_t | tetris ) ^= tetris)) == lineof_t) ? 1 : 0 );
 }

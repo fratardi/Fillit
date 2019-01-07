@@ -124,23 +124,46 @@ with a OR mask
  1100 0000 0000 0000
 |0010 0000 0000 0000
  1110 0000 0000 0000 = 0xE000 = 57344
-------------------------------------------------------------------------------
-how to check if tetris overlap themselves
-?????????????????????????????????????????
-------------------------------------------------------------------------------
-see if it matches within the limits of the grid
-if gridlen = 3
-make a 0xFFFF mask and drift it by length of grid
+#############################################################################################
+how to check if tetris overlap themselves													|
+																							|
+we are going to treat two possible case														|
+____________________________________________________________________________________________|
+case is not overlapping																		|
+																							|
+1 lineto check 										1110 0000 0000 0000 = 0xE000 = 57344	|
+2 line of the tetris positionated					0001 0000 0000 0000 = 0x1000 = 4096		|
+3 result after or iteration between (1 | 2 )		1111 0000 0000 0000 = 0xF000 = 61440	|
+4result after xor iteration between (3 ^= 2)		1110 0000 0000 0000 = 0xE000 = 57344	|
+																							|
+in that case the result of 4 must me equal to the line to check								|
+____________________________________________________________________________________________|
+case is overlapping																			|
+																							|
+1line to check										1110 0000 0000 0000 = 0xE000 = 57344	|
+2line of the tetris positionned						1000 0000 0000 0000 = 0x8000 = 32768	|
+3 result after iteraton betweem (1 | 2)				1110 0000 0000 0000 = 0xE000 = 57344	|
+4 result after xor iteration between (3^= 2)		0110 0000 0000 0000 = 0x6000 = 24576	|
+#############################################################################################
 
-so 0xFFF >> gridlen == mask for line
-0001 1111 1111 1111 = 0x1FFF = 8191
-and apply a and mask over it ?
- 1110 0000 0000 0000
-&0001 1111 1111 1111
-=0000 0000 0000 0000
-0 says that we don't get out of the border
-if result is different than zero that would mean that we go out of the border
-------------------------------------------------------------------------------
+
+
+#####################################################
+see if it matches within the limits of the grid		|
+if gridlen = 3										|
+make a 0xFFFF mask and drift it by length of grid	|
+													|
+so 0xFFF >> gridlen == mask for line				|
+0001 1111 1111 1111 = 0x1FFF = 8191					|
+and apply a and mask over it ?						|
+ 1110 0000 0000 0000								|
+&0001 1111 1111 1111								|
+=0000 0000 0000 0000								|
+0 says that we don't get out of the border			|
+if result is different than zero that would			|
+mean that we go out of the border					|
+####################################################|
+####################################################
 check first line ok so now how to check the n th line
 ?????????????????????????????????????????????????????
 
