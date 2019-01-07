@@ -6,7 +6,7 @@
 /*   By: fratardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/29 12:01:39 by fratardi          #+#    #+#             */
-/*   Updated: 2019/01/03 15:58:11 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/01/07 17:57:18 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include "../libft/libft.h"
 # define BUFF_SIZE 20
-# define NO_OF_TETRIMINOS 17
+# define NO_OF_TETRIMINOS 19
 
 typedef struct			s_tetris
 {
@@ -39,5 +39,10 @@ int						ft_tetriconvert(t_tetris **alst, int letter, char *str);
 */
 int						ft_read_file(const int fd, t_tetris **head);
 unsigned short			buffconvert(const char *tab);
+
+/*
+** DISPLAY FUNCTIONS
+*/
+int						ft_display(t_tetris *head, const int size);
 
 #endif
