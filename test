@@ -167,6 +167,7 @@ check first line ok so now how to check the n th line
 				swap tetris
 				set position to 0;
 			}
+			sortlist
 			increase gridsize
 		}
 **
