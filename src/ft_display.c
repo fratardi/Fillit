@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 16:57:30 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/01/07 17:48:05 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/01/08 15:51:30 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char		**ft_strarrnew(size_t size)
 {
 	char		**str;
-	int			i;
+	size_t		i;
 
 	if (!(str = (char**)malloc(sizeof(char*) * (size + 1))))
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: fratardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 16:04:37 by fratardi          #+#    #+#             */
-/*   Updated: 2019/01/07 17:32:09 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/01/08 13:11:35 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ t_tetris		*ft_tetrisnew(int letter, unsigned short tetris)
 
 	new = (t_tetris*)malloc(sizeof(t_tetris));
 	new->tetri = tetris;
+	new->oxy[0] = 0;
+	new->oxy[1] = 0;
 	new->oxy[2] = letter;
 	new->next = NULL;
 	return (new);
@@ -60,6 +62,10 @@ void			ft_tetrisdisp(t_tetris *head)
 	ft_putchar((char)(head->oxy[2]));
 	ft_putstr("\t");
 	ft_putnbr(head->tetri);
+	ft_putstr("\t");
+	ft_putnbr(head->oxy[0]);
+	ft_putstr("\t");
+	ft_putnbr(head->oxy[1]);
 	ft_putstr("\n");
 	ft_tetrisdisp(head->next);
 }
