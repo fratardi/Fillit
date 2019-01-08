@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 17:16:10 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/01/05 18:07:43 by fratardi         ###   ########.fr       */
+/*   Updated: 2019/01/08 15:50:58 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,15 +76,16 @@ int					ft_read_file(const int fd, t_tetris **head)
 	char			*line;
 	int				ret;
 	char			ch;
-	t_tetris		*ele;
-	unsigned short	tetri;
+	int				count;
 
 	ch = 'A';
+	count = 0;
+	line = 0;
 	if (fd < 0 || read(fd, line, 0) < 0)
 		return (0);
 	while ((ret = ft_read(fd, &line)) == 1 && ch <= 'Z')
 	{
-		if (!ft_tetriconvert(head, ch++, line))
+		if ((count = count + 1) && !ft_tetriconvert(head, ch++, line))
 			return (0);
 		free(line);
 	}
@@ -93,5 +94,5 @@ int					ft_read_file(const int fd, t_tetris **head)
 	if (!ft_tetriconvert(head, ch, line))
 		return (0);
 	free(line);
-	return (1);
+	return (count + 1);
 }
