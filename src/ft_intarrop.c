@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 12:27:45 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/01/08 13:50:04 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/01/08 16:21:15 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 unsigned int		*ft_intarrnew(int size)
 {
-	int		i;
+	int					i;
 	unsigned int		*arr;
 
 	if (!(arr = (unsigned int*)malloc(sizeof(int) * (size))))
@@ -38,7 +38,7 @@ unsigned int		*ft_intarrdup(unsigned int *arr, int size)
 	return (dup);
 }
 
-void	ft_intarrdel(unsigned int **arr, int size)
+void				ft_intarrdel(unsigned int **arr, int size)
 {
 	int		i;
 

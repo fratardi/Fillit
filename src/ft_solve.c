@@ -6,13 +6,14 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 10:59:10 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/01/08 15:53:07 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/01/08 16:22:40 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
 
-int			ft_check_line_overflow(unsigned int grid_l, int j, unsigned int tetri_l, int size)
+int			ft_check_line_overflow(unsigned int grid_l, int j, \
+									unsigned int tetri_l, int size)
 {
 	unsigned int	mask;
 	unsigned int	grid_mask;
@@ -32,7 +33,8 @@ int			ft_check_line_overflow(unsigned int grid_l, int j, unsigned int tetri_l, i
 	return (1);
 }
 
-int			ft_check_line(unsigned int grid_l, t_tetris *head, int mask, int size)
+int			ft_check_line(unsigned int grid_l, t_tetris *head, \
+							int mask, int size)
 {
 	int					j;
 	unsigned int		grid_mask;

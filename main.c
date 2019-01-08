@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 18:54:54 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/01/08 15:49:02 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/01/08 16:26:50 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int		main(int ac, char **av)
 		ft_intarrdel(&grid, size++);
 		grid = ft_intarrnew(size);
 	}
-	ft_display(link, size);
+	ft_intarrdel(&grid, size);
+	if (!ft_display(link, size))
+		return (ft_puterror(ac, &link, 1));
 	return (ft_puterror(ac, &link, 1));
 }
