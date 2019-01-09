@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 12:27:45 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/01/08 16:21:15 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/01/09 16:19:40 by fratardi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void				ft_intarrdel(unsigned int **arr, int size)
 	*arr = 0;
 }
 
-int		ft_findsqrt(int num)
+int					ft_findsqrt(int num)
 {
 	int		i;
 

@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 10:59:10 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/01/08 16:22:40 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/01/09 16:10:13 by fratardi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int			ft_check_line_overflow(unsigned int grid_l, int j, \
 	unsigned int	grid_mask;
 
 	mask = 0xF;
-	grid_mask = 0x8 << (32 - j - 4);
+	grid_mask = 0x8 << (0x20 - j - 0x4);
 	while (mask && j < size)
 	{
 		if (tetri_l & grid_l & grid_mask)
@@ -46,9 +46,9 @@ int			ft_check_line(unsigned int grid_l, t_tetris *head, \
 	while (mask != 0xF)
 	{
 		tetri_cpy = tetri_cpy >> 1;
-		mask = mask >> 1;
+		mask = mask >> 0x1;
 	}
-	tetri_cpy = tetri_cpy << (32 - j - 4);
+	tetri_cpy = tetri_cpy << (0x20 - j - 0x4);
 	if (!ft_check_line_overflow(grid_l, j, tetri_cpy, size))
 		return (-1);
 	return (grid_l ^ tetri_cpy);
@@ -63,13 +63,13 @@ int			ft_isvalid(unsigned int *grid, t_tetris *head, const int size)
 
 	i = head->oxy[0];
 	j = head->oxy[1];
-	if (i >= size || j >= size || i < 0 || j < 0)
+	if (i >= size || j >= size || i < 0x0 || j < 0x0)
 		return (0);
 	mask = 0xF000;
 	if ((ret = ft_check_line(grid[i], head, mask, size)) == -1)
 		return (0);
 	grid[i] = ret;
-	while ((mask = mask >> 4) && ++i < size)
+	while ((mask = mask >> 0x4) && ++i < size)
 	{
 		if ((ret = ft_check_line(grid[i], head, mask, size)) == -1)
 			return (0);
