@@ -6,7 +6,7 @@
 /*   By: fratardi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/01 17:26:07 by fratardi          #+#    #+#             */
-/*   Updated: 2019/01/09 17:32:05 by fratardi         ###   ########.fr       */
+/*   Updated: 2019/01/09 17:46:30 by fratardi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static unsigned short		toplefter(unsigned short value)
 
 	arr = ft_arr();
 	while (value != 0 && !ft_eq(arr, value))
-		value = value << 1;
+		value = value << 0x1;
 	free(arr);
 	return (value);
 }
@@ -78,7 +78,7 @@ unsigned short				buffconvert(const char *str)
 		{
 			if (str[pos] == '#' && (b = 1))
 				ret = ret | mask;
-			mask = mask >> 1;
+			mask = mask >> 0x1;
 			pos++;
 		}
 		mask = b ? mask : 0x8000;
