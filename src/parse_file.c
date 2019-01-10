@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 17:16:10 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/01/10 17:39:26 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/01/10 17:50:52 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ static int			ft_checksum(const char *str)
 			return (0);
 		i++;
 	}
-	return (cnt_dot + cnt_hash == 16 && (cnt == 6 || cnt == 8));
+	return (cnt_dot + cnt_hash == 16 \
+			&& cnt_hash == 4 \
+			&& (cnt == 6 || cnt == 8));
 }
 
 static int			ft_read(const int fd, char **str)
