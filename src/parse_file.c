@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 17:16:10 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/01/08 15:50:58 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/01/10 17:39:26 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int					ft_read_file(const int fd, t_tetris **head)
 			return (0);
 		free(line);
 	}
-	if (ret == -1 || ch == 'Z')
+	if (ret == -1 || ch > 'Z')
 		return (0);
 	if (!ft_tetriconvert(head, ch, line))
 		return (0);
