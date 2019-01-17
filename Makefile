@@ -6,7 +6,7 @@
 #    By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/02 19:01:54 by dkhatri           #+#    #+#              #
-#    Updated: 2019/01/08 16:08:59 by dkhatri          ###   ########.fr        #
+#    Updated: 2019/01/11 17:50:29 by dkhatri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = fillit
 
 MAIN = main.c
 
-FLAGS = 
+FLAGS = -Wall -Wextra -Werror
 
 SRCDIR = ./src/
 
@@ -33,7 +33,7 @@ all: $(NAME)
 
 $(NAME): $(SRCO)
 	make -C libft
-	gcc -o $(NAME) $(SRCO) -L libft/ -lft
+	gcc $(FLAGS) -o $(NAME) $(SRCO) -L libft/ -lft
 
 clean:
 	make -C libft clean

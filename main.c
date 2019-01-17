@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 18:54:54 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/01/08 16:26:50 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/01/14 16:17:32 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		ft_puterror(int ac, t_tetris **head, int i)
 	if (head && *head)
 		ft_freetetri(head);
 	if (!i)
-		ft_putstr("error");
+		ft_putendl("error");
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: dkhatri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 17:16:10 by dkhatri           #+#    #+#             */
-/*   Updated: 2019/01/10 17:50:52 by dkhatri          ###   ########.fr       */
+/*   Updated: 2019/01/14 16:31:06 by dkhatri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ static int			ft_read(const int fd, char **str)
 	char	*buf;
 	char	ch;
 
-	buf = (char*)malloc(sizeof(char) * 20);
+	if (!(buf = (char*)malloc(sizeof(char) * 20)))
+		return (-1);
 	ret = read(fd, buf, BUFF_SIZE);
 	buf[ret] = '\0';
 	if (ret < BUFF_SIZE || ft_strlen(buf) != 20 || !ft_checksum(buf))
